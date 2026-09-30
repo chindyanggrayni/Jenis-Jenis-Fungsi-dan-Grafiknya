@@ -134,7 +134,7 @@
                         </ul>
                     </div>
 
-                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <!-- Penjelasan Materi & Konsep Utama -->
                     <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
                         <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
                             <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Fungsi Rasional & Perilaku Asimtotik
@@ -142,21 +142,7 @@
                         <p>
                             Fungsi rasional didefinisikan sebagai rasio atau hasil bagi dari dua fungsi polinomial, yang ditulis secara umum sebagai \( f(x) = \frac{P(x)}{Q(x)} \), di mana \( P(x) \) dan \( Q(x) \) adalah polinomial dan \( Q(x) \neq 0 \). Karakteristik paling khas dari fungsi rasional adalah grafiknya yang tidak kontinu di beberapa titik serta keberadaan garis-garis pembatas imajiner yang disebut <strong>asimtot</strong>.
                         </p>
-                        <p>
-                            Analisis perilaku kurva di sekitar asimtot sangat krusial dalam matematika tingkat lanjut:
-                        </p>
-                        <ul class="list-disc list-inside space-y-2 pl-2">
-                            <li><strong>Penentuan Asimtot Tegak (Vertical Asymptote):</strong> Terjadi pada nilai \( x = a \) di mana penyebut \( Q(a) = 0 \), namun pembilang \( P(a) \neq 0 \). Secara intuitif, ketika \( x \) mendekati \( a \), nilai mutlak fungsi membesar tanpa batas (\( |f(x)| \to \infty \)). Jika faktor \( (x-a) \) sama-sama bernilai nol di pembilang dan penyebut, titik tersebut bukan asimtot tegak melainkan berupa <strong>lubang (hole)</strong> pada grafik.</li>
-                            <li><strong>Penentuan Asimtot Datar (Horizontal Asymptote):</strong> Menjelaskan perilaku ujung grafik saat \( x \to \infty \) atau \( x \to -\infty \). Ditentukan melalui perbandingan derajat tertinggi polinomial pembilang (\( n \)) dan penyebut (\( m \)):
-                                <div class="p-3 my-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl font-mono text-xs space-y-1 border border-slate-200 dark:border-slate-700">
-                                    <div>1. Jika \( n < m \), asimtot datar adalah \( y = 0 \).</div>
-                                    <div>2. Jika \( n = m \), asimtot datar adalah \( y = \frac{a_n}{b_m} \) (perbandingan koefisien utama).</div>
-                                    <div>3. Jika \( n > m \), tidak ada asimtot datar (kurva meluncur ke tak hingga).</div>
-                                </div>
-                            </li>
-                            <li><strong>Penentuan Asimtot Miring (Slant/Oblique Asymptote):</strong> Terjadi khusus ketika derajat pembilang tepat satu tingkat di atas derajat penyebut (\( n = m + 1 \)). Persamaan garis asimtot miring \( y = mx + c \) diperoleh dengan melakukan pembagian polinomial panjang \( P(x) \div Q(x) \), di mana bagian sisa pembagian akan mendekati nol seiring \( x \to \pm\infty \).</li>
-                        </ul>
-
+                        
                         <!-- Istilah Penting -->
                         <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
                             <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
@@ -201,22 +187,76 @@
                         </div>
                     </div>
 
-                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
-                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
-                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Fungsi Rasional
+                    <!-- 3 Contoh Soal & Pembahasan Konsep (Termasuk 2 Model AKM/ANBK) -->
+                    <div class="space-y-4 pt-2">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> 3 Contoh Soal & Pembahasan Konsep (Termasuk Model AKM / ANBK)
                         </h3>
-                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <strong>Contoh:</strong> Tentukan asimtot tegak, asimtot datar, dan titik potong sumbu \( Y \) dari fungsi rasional:
-                            $$ f(x) = \frac{2x - 6}{x + 1} $$
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li><strong>Asimtot Tegak:</strong> Penyebut bernilai nol saat \( x + 1 = 0 \implies x = -1 \). Jadi asimtot tegaknya adalah \( x = -1 \).</li>
-                                <li><strong>Asimtot Datar:</strong> Derajat pembilang dan penyebut sama (\( 1 \)), maka perbandingan koefisien tertinggi \( y = \frac{2}{1} = 2 \). Asimtot datarnya adalah \( y = 2 \).</li>
-                                <li><strong>Titik Potong Sumbu Y:</strong> Substitusikan \( x = 0 \implies f(0) = \frac{2(0)-6}{0+1} = -6 \). Titik potongnya adalah \( (0, -6) \).</li>
-                            </ul>
+
+                        <!-- Contoh 1: Standar Konseptual -->
+                        <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 1: Analisis Asimtot Dasar</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <strong>Soal:</strong> Tentukan asimtot tegak, asimtot datar, dan titik potong sumbu \( Y \) dari fungsi rasional:
+                                $$ f(x) = \frac{2x - 6}{x + 1} $$
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><strong>Asimtot Tegak:</strong> Penyebut bernilai nol saat \( x + 1 = 0 \implies x = -1 \). Jadi asimtot tegaknya adalah \( x = -1 \).</li>
+                                    <li><strong>Asimtot Datar:</strong> Derajat pembilang dan penyebut sama (\( 1 \)), maka perbandingan koefisien tertinggi \( y = \frac{2}{1} = 2 \). Asimtot datarnya adalah \( y = 2 \).</li>
+                                    <li><strong>Titik Potong Sumbu Y:</strong> Substitusikan \( x = 0 \implies f(0) = \frac{2(0)-6}{0+1} = -6 \). Titik potongnya adalah \( (0, -6) \).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 2: Model AKM / ANBK (Lingkungan & Sanitasi) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 2: Model AKM / ANBK (Konteks Sanitasi & Lingkungan)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Kompleks</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Dinas Kebersihan suatu kota meneliti tingkat pencemaran limbah pada sebuah waduk. Kadar polutan (dalam ppm) setelah \( t \) bulan pembersihan dimodelkan oleh:
+                                $$ P(t) = \frac{50t + 10}{2t + 1} $$
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Berapakah batas minimal kadar polutan yang dapat dicapai waduk tersebut jika program pembersihan dilakukan dalam jangka waktu tak terhingga (\( t \to \infty \))?
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Menganalisis batas nilai fungsi saat \( t \to \infty \) sama dengan mencari asimtot datar kurva.</li>
+                                    <li>Karena derajat suku pembilang dan penyebut sama (\( 1 \)), hitung perbandingan koefisien suku tertinggi: \( \frac{50}{2} = 25 \).</li>
+                                    <li>Maka batas minimal kadar polutan yang dapat tercapai adalah \( 25 \) ppm.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 3: Model AKM / ANBK (Manufaktur & Ekonomi) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 3: Model AKM / ANBK (Konteks Ekonomi Manufaktur)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Sebuah pabrik memproduksi alat elektronik. Fungsi biaya total produksi per unit (dalam ribuan rupiah) dirumuskan sebagai:
+                                $$ C(x) = \frac{2x^2 - 4x + 18}{x - 2} $$
+                                di mana \( x \) adalah jumlah unit yang diproduksi (\( x > 2 \)).
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Tentukan persamaan garis asimtot miring yang menggambarkan tren fungsi biaya rata-rata tersebut untuk produksi skala sangat besar.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Derajat pembilang (\( 2 \)) tepat satu tingkat di atas penyebut (\( 1 \)), sehingga memiliki asimtot miring.</li>
+                                    <li>Lakukan pembagian polinomial panjang \( (2x^2 - 4x + 18) \div (x - 2) \).</li>
+                                    <li>Hasil bagi yang diperoleh adalah \( 2x \) dengan sisa \( 18 \). Oleh karena itu, persamaan asimtot miringnya adalah \( y = 2x \).</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -330,11 +370,11 @@
                                     <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Kompleks</span>
                                 </div>
                                 <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                                    <strong>Wacana:</strong> Dinas Kebersihan suatu kota meneliti tingkat pencemaran limbah pada sebuah waduk. Kadar polutan (dalam bagian per juta/ppm) setelah \( t \) bulan pembersihan dimodelkan oleh fungsi rasional:
+                                    <strong>Wacana:</strong> Dinas Kebersihan suatu kota meneliti tingkat pencemaran limbah pada sebuah waduk. Kadar polutan (dalam ppm) setelah \( t \) bulan pembersihan dimodelkan oleh:
                                     $$ P(t) = \frac{50t + 10}{2t + 1} $$
                                 </p>
                                 <p class="text-sm font-semibold text-slate-900 dark:text-white">
-                                    Pertanyaan: Berdasarkan model matematika tersebut, berapakah batas minimal kadar polutan yang dapat dicapai waduk tersebut jika program pembersihan dilakukan dalam jangka waktu yang sangat panjang tak terhingga (\( t \to \infty \))?
+                                    Pertanyaan: Berapakah batas minimal kadar polutan yang dapat dicapai waduk tersebut jika program pembersihan dilakukan dalam jangka waktu tak terhingga (\( t \to \infty \))?
                                 </p>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                                     <button onclick="checkAnswer(this, false, 'Salah. Perhatikan asimtot datar fungsi.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 0 \) ppm</button>
@@ -392,23 +432,15 @@
                         </ul>
                     </div>
 
-                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <!-- Penjelasan Materi & Konsep Utama -->
                     <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
                         <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
                             <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Eksponen & Logaritma sebagai Invers
                         </h3>
                         <p>
-                            Fungsi eksponensial memiliki bentuk umum \( f(x) = a \cdot b^x + c \) (dengan \( b > 0 \) dan \( b \neq 1 \)). Grafik fungsi eksponensial murni selalu melalui titik \( (0, 1) \) dan memiliki asimtot datar berupa sumbu \( X \) (\( y = 0 \)). Pertumbuhan eksponensial ditandai oleh kenaikan nilai yang sangat drastis (melengkung ke atas) jika basis \( b > 1 \), atau peluruhan eksponensial jika \( 0 < b < 1 \).
+                            Fungsi eksponensial memiliki bentuk umum \( f(x) = a \cdot b^x + c \) (dengan \( b > 0 \) dan \( b \neq 1 \)). Grafik fungsi eksponensial murni selalu melalui titik \( (0, 1) \) dan memiliki asimtot datar berupa sumbu \( X \) (\( y = 0 \)).
                         </p>
-                        <p>
-                            Sebaliknya, fungsi logaritma \( f(x) = \log_b(x) \) adalah invers sejati dari fungsi eksponensial. Secara geometris, grafik fungsi logaritma merupakan hasil pencerminan dari grafik fungsi eksponensial terhadap garis diagonal identitas \( y = x \). Beberapa prinsip penting meliputi:
-                        </p>
-                        <ul class="list-disc list-inside space-y-2 pl-2">
-                            <li><strong>Syarat Domain & Numerus:</strong> Karena logaritma adalah invers eksponen yang hasilnya selalu positif, maka besaran numerus di dalam logaritma wajib bernilai positif strict (\( x > 0 \)). Basis logaritma juga harus memenuhi \( b > 0 \) dan \( b \neq 1 \).</li>
-                            <li><strong>Sifat-Sifat Aljabar Logaritma:</strong> Meliputi sifat penjumlahan perkalian (\( \log_b(xy) = \log_b x + \log_b y \)), pengurangan pembagian (\( \log_b(\frac{x}{y}) = \log_b x - \log_b y \)), perpangkatan numerus (\( \log_b(x^k) = k \log_b x \)), serta rumus perubahan basis (\( \log_b a = \frac{\log_c a}{\log_c b} \)).</li>
-                            <li><strong>Bilangan Natural (\( e \)):</strong> Konstanta matematika penting \( e \approx 2{,}71828 \) yang menjadi basis utama fungsi eksponensial alami (\( e^x \)) dan logaritma natural (\( \ln x \)), yang banyak digunakan dalam pemodelan kalkulus pertumbuhan populasi dan ekonomi keuangan.</li>
-                        </ul>
-
+                        
                         <!-- Istilah Penting -->
                         <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
                             <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
@@ -443,23 +475,79 @@
                         </div>
                     </div>
 
-                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
-                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
-                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Eksponen & Logaritma
+                    <!-- 3 Contoh Soal & Pembahasan Konsep (Termasuk 2 Model AKM/ANBK) -->
+                    <div class="space-y-4 pt-2">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> 3 Contoh Soal & Pembahasan Konsep (Termasuk Model AKM / ANBK)
                         </h3>
-                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <strong>Contoh:</strong> Tentukan himpunan penyelesaian dari persamaan logaritma:
-                            $$ \log_3(x) + \log_3(x - 2) = 1 $$
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Gunakan sifat penjumlahan logaritma: \( \log_3(x(x - 2)) = 1 \).</li>
-                                <li>Ubah ke bentuk eksponen: \( x(x - 2) = 3^1 \implies x^2 - 2x - 3 = 0 \).</li>
-                                <li>Faktorkan persamaan kuadrat: \( (x - 3)(x + 1) = 0 \implies x = 3 \) atau \( x = -1 \).</li>
-                                <li>Uji syarat numerus (\( x > 0 \) dan \( x - 2 > 0 \implies x > 2 \)): Nilai \( x = -1 \) ditolak. Jadi penyelesaiannya adalah \( x = 3 \).</li>
-                            </ul>
+
+                        <!-- Contoh 1: Standar Konseptual -->
+                        <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 1: Persamaan Logaritma Dasar</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <strong>Soal:</strong> Tentukan himpunan penyelesaian dari persamaan logaritma:
+                                $$ \log_3(x) + \log_3(x - 2) = 1 $$
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Gunakan sifat penjumlahan logaritma: \( \log_3(x(x - 2)) = 1 \).</li>
+                                    <li>Ubah ke bentuk eksponen: \( x(x - 2) = 3^1 \implies x^2 - 2x - 3 = 0 \).</li>
+                                    <li>Faktorkan persamaan kuadrat: \( (x - 3)(x + 1) = 0 \implies x = 3 \) atau \( x = -1 \).</li>
+                                    <li>Uji syarat numerus (\( x > 0 \) dan \( x - 2 > 0 \implies x > 2 \)): Nilai \( x = -1 \) ditolak. Jadi penyelesaiannya adalah \( x = 3 \).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 2: Model AKM / ANBK (Biologi & Virologi) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 2: Model AKM / ANBK (Konteks Biologi & Virologi)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Literasi Sains</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Dalam uji laboratorium bioteknologi, pertumbuhan koloni bakteri jenis tertentu mengikuti model eksponensial berdasar fungsi waktu:
+                                $$ N(t) = 400 \cdot 2^{0,25t} $$
+                                di mana \( N(t) \) adalah jumlah sel bakteri setelah \( t \) jam.
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Berapa jam waktu yang dibutuhkan agar jumlah populasi bakteri tersebut tepat mencapai 12.800 sel?
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Substitusikan nilai \( N(t) = 12800 \) ke dalam persamaan: \( 12800 = 400 \cdot 2^{0,25t} \).</li>
+                                    <li>Bagikan kedua ruas dengan \( 400 \): \( 32 = 2^{0,25t} \).</li>
+                                    <li>Ubah ke bentuk basis pangkat yang sama: \( 2^5 = 2^{0,25t} \).</li>
+                                    <li>Samakan pangkat: \( 0,25t = 5 \implies t = \frac{5}{0,25} = 20 \) jam.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 3: Model AKM / ANBK (Seismologi & Geofisika) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 3: Model AKM / ANBK (Konteks Seismologi & Geofisika)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah Kompleks</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Dalam pengukuran kekuatan gempa bumi, skala magnitudo Richter dirumuskan menggunakan fungsi logaritma basis 10:
+                                $$ M = \log_{10}\left(\frac{I}{I_0}\right) $$
+                                di mana \( I \) adalah intensitas gelombang gempa dan \( I_0 \) adalah intensitas acuan minimum. Badan Meteorologi mencatat dua kejadian gempa dengan kekuatan 6,4 SR dan 8,4 SR.
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Berapa kali lipat perbandingan besarnya energi atau intensitas gelombang gempa (\( I \)) antara gempa 8,4 SR dibandingkan dengan 6,4 SR?
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Hitung selisih magnitudo Richter kedua gempa: \( 8,4 - 6,4 = 2,0 \).</li>
+                                    <li>Karena skala Richter berbasis logaritma basis 10, selisih 2 tingkat magnitudo menunjukkan perpangkatan basis sepuluh: \( 10^2 = 100 \).</li>
+                                    <li>Maka perbandingan intensitas gelombang gempa tersebut adalah 100 kali lipat.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -636,7 +724,7 @@
                         </ul>
                     </div>
 
-                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <!-- Penjelasan Materi & Konsep Utama -->
                     <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
                         <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
                             <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Modulus, Tangga, & Fungsi Piecewise
@@ -644,12 +732,7 @@
                         <p>
                             Dalam analisis matematika lanjut, tidak semua fenomena dapat dimodelkan oleh satu persamaan mulus. 
                         </p>
-                        <ul class="list-disc list-inside space-y-2 pl-2">
-                            <li><strong>Fungsi Nilai Mutlak (Modulus):</strong> Didefinisikan secara piecewise sebagai \( |x| = x \) jika \( x \ge 0 \) dan \( |x| = -x \) jika \( x < 0 \). Secara geometris di bidang koordinat Cartesius, grafik \( f(x) = |x - h| + k \) membentuk kurva simetris berbentuk huruf 'V' dengan titik sudut (vertex) di koordinat \((h, k)\). Nilai mutlak selalu menghasilkan keluaran non-negatif (\( \ge 0 \)).</li>
-                            <li><strong>Fungsi Tangga (Step Function):</strong> Pemetaan yang membulatkan nilai real ke bilangan bulat terdekat, seperti fungsi *floor* (\( \lfloor x \rfloor \), bilangan bulat terbesar yang kurang dari atau sama dengan \( x \)) dan fungsi *ceil* (\( \lceil x \rceil \), bilangan bulat terkecil yang lebih besar dari atau sama dengan \( x \)). Grafik fungsi ini menyerupai anak tangga terputus-putus.</li>
-                            <li><strong>Fungsi Sepotong-Sepotong (Piecewise Function):</strong> Fungsi yang didefinisikan oleh beberapa sub-fungsi berbeda tergantung pada interval domain tertentu. Dalam menganalisis kontinuitas fungsi piecewise, kita harus memastikan nilai batas kiri dan batas kanan pada titik transisi bernilai sama persis.</li>
-                        </ul>
-
+                        
                         <!-- Istilah Penting -->
                         <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
                             <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
@@ -690,23 +773,77 @@
                         </div>
                     </div>
 
-                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
-                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
-                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Fungsi Modulus
+                    <!-- 3 Contoh Soal & Pembahasan Konsep (Termasuk 2 Model AKM/ANBK) -->
+                    <div class="space-y-4 pt-2">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> 3 Contoh Soal & Pembahasan Konsep (Termasuk Model AKM / ANBK)
                         </h3>
-                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <strong>Contoh:</strong> Tentukan himpunan penyelesaian dari pertidaksamaan nilai mutlak:
-                            $$ |3x - 2| \le 7 $$
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Berdasarkan sifat dasar pertidaksamaan mutlak (\( |a| \le c \iff -c \le a \le c \)), ubah menjadi: \( -7 \le 3x - 2 \le 7 \).</li>
-                                <li>Tambahkan \( 2 \) ke semua ruas: \( -7 + 2 \le 3x \le 7 + 2 \implies -5 \le 3x \le 9 \).</li>
-                                <li>Bagikan dengan \( 3 \): \( -\frac{5}{3} \le x \le 3 \).</li>
-                                <li>Himpunan penyelesaiannya adalah interval tertutup \( \left[-\frac{5}{3}, 3\right] \).</li>
-                            </ul>
+
+                        <!-- Contoh 1: Standar Konseptual -->
+                        <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 1: Pertidaksamaan Nilai Mutlak Dasar</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <strong>Soal:</strong> Tentukan himpunan penyelesaian dari pertidaksamaan nilai mutlak:
+                                $$ |3x - 2| \le 7 $$
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Berdasarkan sifat dasar pertidaksamaan mutlak (\( |a| \le c \iff -c \le a \le c \)), ubah menjadi: \( -7 \le 3x - 2 \le 7 \).</li>
+                                    <li>Tambahkan \( 2 \) ke semua ruas: \( -7 + 2 \le 3x \le 7 + 2 \implies -5 \le 3x \le 9 \).</li>
+                                    <li>Bagikan dengan \( 3 \): \( -\frac{5}{3} \le x \le 3 \).</li>
+                                    <li>Himpunan penyelesaiannya adalah interval tertutup \( \left[-\frac{5}{3}, 3\right] \).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 2: Model AKM / ANBK (Kendali Mutu Industri) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 2: Model AKM / ANBK (Konteks Kendali Mutu Industri)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Analitis</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strongWacana:>Pabrik tekstil memproduksi kain dengan panjang ideal \( 100\text{ meter} \). Syarat kelulusan uji mutu pabrik memenuhi pemodelan mutlak:
+                                $$ |x - 100| \le 0,75 $$
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Tentukan rentang interval panjang kain (\( x \)) dalam meter yang memenuhi kriteria lulus uji kualitas tersebut.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Jabarkan pertidaksamaan mutlak menjadi bentuk rentang ganda: \( -0,75 \le x - 100 \le 0,75 \).</li>
+                                    <li>Tambahkan \( 100 \) ke seluruh ruas pertidaksamaan: \( 100 - 0,75 \le x \le 100 + 0,75 \).</li>
+                                    <li>Maka rentang interval panjang kain yang diterima adalah \( 99,25 \le x \le 100,75 \).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 3: Model AKM / ANBK (Transportasi Publik) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 3: Model AKM / ANBK (Konteks Transportasi Publik)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah Kompleks</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Layanan transportasi massal menggunakan fungsi tangga untuk perhitungan tarif progresif:
+                                $$ T(d) = 5000 + 2000 \cdot \lceil d - 1 \rceil $$
+                                Seorang penumpang melakukan perjalanan sejauh \( 4,3\text{ kilometer} \).
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Berapakah total biaya tarif yang harus dibayarkan oleh penumpang tersebut?
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Masukkan nilai jarak \( d = 4,3 \) ke dalam argumen fungsi tangga: \( d - 1 = 4,3 - 1 = 3,3 \).</li>
+                                    <li>Evaluasi fungsi pembulatan ke atas (*ceil*): \( \lceil 3,3 \rceil = 4 \).</li>
+                                    <li>Hitung total tarif: \( T = 5000 + 2000 \cdot (4) = 5000 + 8000 = \text{Rp13.000} \).</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -882,25 +1019,15 @@
                         </ul>
                     </div>
 
-                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <!-- Penjelasan Materi & Konsep Utama -->
                     <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
                         <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
                             <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Gelombang Trigonometri & Parameternya
                         </h3>
                         <p>
-                            Fungsi trigonometri dasar diturunkan dari koordinat titik pada lingkaran satuan (radius \( r = 1 \)). Ketika nilai sudut dipetakan terhadap sumbu waktu atau jarak, grafik yang terbentuk adalah osilasi gelombang periodik berulang. Bentuk umum fungsi gelombang sinusoidal adalah:
-                            $$ f(x) = A \sin(kx - c) + D $$
+                            Fungsi trigonometri dasar diturunkan dari koordinat titik pada lingkaran satuan (radius \( r = 1 \)). Ketika nilai sudut dipetakan terhadap sumbu waktu atau jarak, grafik yang terbentuk adalah osilasi gelombang periodik berulang.
                         </p>
-                        <p>
-                            Setiap parameter dalam persamaan gelombang umum memiliki makna fisis dan geometris yang spesifik:
-                        </p>
-                        <ul class="list-disc list-inside space-y-2 pl-2">
-                            <li><strong>Amplitudo (\( |A| \)):</strong> Menyatakan simpangan atau tinggi maksimum gelombang dari garis kesetimbangan tengah. Nilainya selalu diambil positif.</li>
-                            <li><strong>Periode (\( T \)):</strong> Panjang interval horizontal yang dibutuhkan untuk menempuh satu siklus osilasi penuh, dihitung dengan rumus \( T = \frac{2\pi}{k} \). Frekuensi gelombang (\( f \)) adalah kebalikan dari periode (\( f = \frac{1}{T} \)).</li>
-                            <li><strong>Pergeseran Fasa (\( \frac{c}{k} \)):</strong> Menggeser posisi awal gelombang ke arah horizontal kanan atau kiri di sepanjang sumbu \( X \).</li>
-                            <li><strong>Garis Kesetimbangan (\( D \)):</strong> Menggeser seluruh kurva gelombang secara vertikal ke atas atau ke bawah sejauh \( D \) satuan, yang sekaligus menjadi nilai rata-rata dari nilai maksimum dan minimum gelombang.</li>
-                        </ul>
-
+                        
                         <!-- Istilah Penting -->
                         <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
                             <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
@@ -941,22 +1068,76 @@
                         </div>
                     </div>
 
-                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
-                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
-                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Fungsi Trigonometri
+                    <!-- 3 Contoh Soal & Pembahasan Konsep (Termasuk 2 Model AKM/ANBK) -->
+                    <div class="space-y-4 pt-2">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> 3 Contoh Soal & Pembahasan Konsep (Termasuk Model AKM / ANBK)
                         </h3>
-                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <strong>Contoh:</strong> Tentukan amplitudo, periode, dan nilai maksimum dari fungsi gelombang:
-                            $$ f(x) = 3 \cos(2x) + 1 $$
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li><strong>Amplitudo:</strong> Nilai mutlak dari koefisien kosinus \( |3| = 3 \).</li>
-                                <li><strong>Periode:</strong> Dihitung dengan rumus \( T = \frac{2\pi}{k} = \frac{2\pi}{2} = \pi \).</li>
-                                <li><strong>Nilai Maksimum:</strong> Kesetimbangan ditambah amplitudo: \( 1 + 3 = 4 \).</li>
-                            </ul>
+
+                        <!-- Contoh 1: Standar Konseptual -->
+                        <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 1: Parameter Gelombang Dasar</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <strong>Soal:</strong> Tentukan amplitudo, periode, dan nilai maksimum dari fungsi gelombang:
+                                $$ f(x) = 3 \cos(2x) + 1 $$
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><strong>Amplitudo:</strong> Nilai mutlak dari koefisien kosinus \( |3| = 3 \).</li>
+                                    <li><strong>Periode:</strong> Dihitung dengan rumus \( T = \frac{2\pi}{k} = \frac{2\pi}{2} = \pi \).</li>
+                                    <li><strong>Nilai Maksimum:</strong> Kesetimbangan ditambah amplitudo: \( 1 + 3 = 4 \).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 2: Model AKM / ANBK (Oseanografi) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 2: Model AKM / ANBK (Konteks Oseanografi)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Literasi Sains</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Ketinggian permukaan air laut \( h \) (dalam meter) terhadap waktu tengah malam (\( t \) jam) dimodelkan oleh:
+                                $$ h(t) = 3 \sin\left(\frac{\pi}{6}t\right) + 5 $$
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Pada jam ke berapa sajakah ketinggian air laut mencapai titik maksimum pertamanya setelah tengah malam (\( t = 0 \))?
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Ketinggian air laut mencapai maksimum saat nilai sinus bernilai 1: \( \sin\left(\frac{\pi}{6}t\right) = 1 \).</li>
+                                    <li>Sudut standar di mana nilai sinus bernilai 1 adalah \( \frac{\pi}{2} \).</li>
+                                    <li>Samakan argumen sudut: \( \frac{\pi}{6}t = \frac{\pi}{2} \implies t = \frac{\pi}{2} \times \frac{6}{\pi} = 3 \) jam.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contoh 3: Model AKM / ANBK (Teknik Elektro) -->
+                        <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-violet-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Contoh 3: Model AKM / ANBK (Konteks Teknik Elektro)</span>
+                                <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah Kompleks</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                <strong>Wacana:</strong> Tegangan listrik bolak-balik (AC) rumah tangga dimodelkan oleh persamaan:
+                                $$ V(t) = 220 \sqrt{2} \sin(100\pi t) $$
+                                di mana \( V \) adalah tegangan dalam Volt dan \( t \) waktu dalam detik.
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Pertanyaan: Berapakah nilai waktu terkecil \( t \) (dalam detik) saat tegangan listrik gelombang AC tersebut bernilai nol untuk pertama kalinya setelah \( t = 0 \)?
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Tegangan bernilai nol saat \( V(t) = 0 \implies \sin(100\pi t) = 0 \).</li>
+                                    <li>Nilai sudut terkecil positif di mana sinus bernilai nol adalah \( \pi \).</li>
+                                    <li>Maka: \( 100\pi t = \pi \implies t = \frac{\pi}{100\pi} = \frac{1}{100} \) detik.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
