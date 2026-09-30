@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematika - Kelas 11 SMA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        darkBg: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Konfigurasi MathJax yang Diperbarui & Aman -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        console.log('MathJax initial typesetting complete.');
+                    });
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-indigo-100 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-indigo-600 to-violet-500 text-white p-2.5 rounded-2xl shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base sm:text-lg bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">LMS Matematika Tingkat Lanjut</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Kelas 11 SMA • Chapter 4: Jenis-Jenis Fungsi & Grafik</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm" title="Ganti Tema">
+                    <i id="theme-icon" class="fa-solid fa-moon text-base"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:col-span-1 space-y-4">
+            <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-3xl shadow-xl shadow-indigo-500/5 border border-indigo-100/80 dark:border-slate-800 sticky top-24">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 mb-4 px-2">Daftar Modul Bab 4</h2>
+                <nav class="space-y-2">
+                    <button onclick="switchTab('sub41')" id="btn-sub41" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-sm transition flex items-center space-x-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-500/20">
+                        <div class="bg-white/20 p-2 rounded-xl"><i class="fa-solid fa-chart-line text-sm"></i></div>
+                        <span>4.1 Fungsi Rasional & Asimtot</span>
+                    </button>
+                    <button onclick="switchTab('sub42')" id="btn-sub42" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-sm transition flex items-center space-x-3 hover:bg-indigo-50 dark:hover:bg-slate-800/60 text-slate-600 dark:text-slate-300">
+                        <div class="bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 p-2 rounded-xl"><i class="fa-solid fa-square-root-variable text-sm"></i></div>
+                        <span>4.2 Eksponen & Logaritma</span>
+                    </button>
+                    <button onclick="switchTab('sub43')" id="btn-sub43" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-sm transition flex items-center space-x-3 hover:bg-indigo-50 dark:hover:bg-slate-800/60 text-slate-600 dark:text-slate-300">
+                        <div class="bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 p-2 rounded-xl"><i class="fa-solid fa-stairs text-sm"></i></div>
+                        <span>4.3 Modulus & Piecewise</span>
+                    </button>
+                    <button onclick="switchTab('sub44')" id="btn-sub44" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-sm transition flex items-center space-x-3 hover:bg-indigo-50 dark:hover:bg-slate-800/60 text-slate-600 dark:text-slate-300">
+                        <div class="bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 p-2 rounded-xl"><i class="fa-solid fa-wave-square text-sm"></i></div>
+                        <span>4.4 Trigonometri & Grafiknya</span>
+                    </button>
+                </nav>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/40 dark:to-purple-950/40 p-4 rounded-2xl border border-indigo-100 dark:border-indigo-900/30">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="text-xs font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">Progres Bab</h4>
+                            <span id="progress-text" class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400">25%</span>
+                        </div>
+                        <div class="w-full bg-indigo-200/60 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="bg-gradient-to-r from-indigo-600 to-purple-600 h-full w-1/4 rounded-full transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="lg:col-span-3 space-y-6">
+            
+            <!-- SUB 4.1 -->
+            <div id="content-sub41" class="tab-content space-y-6">
+                <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-indigo-100/80 dark:border-slate-800 space-y-6">
+                    <div class="border-b border-indigo-50 dark:border-slate-800 pb-5">
+                        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-extrabold tracking-wider uppercase mb-2">Sub-Bab 4.1</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Fungsi Rasional dan Asimtot</h2>
+                    </div>
+
+                    <!-- Tujuan Pembelajaran -->
+                    <div class="bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-purple-500/10 p-6 rounded-2xl border border-indigo-200/60 dark:border-indigo-900/40">
+                        <h3 class="font-bold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2.5 mb-3">
+                            <div class="bg-indigo-600 text-white p-1.5 rounded-lg"><i class="fa-solid fa-bullseye text-xs"></i></div> Tujuan Pembelajaran
+                        </h3>
+                        <ul class="list-disc list-inside text-sm space-y-1.5 text-slate-700 dark:text-slate-300 font-medium">
+                            <li>Memahami bentuk umum fungsi rasional serta menganalisis domain dan range secara analitis.</li>
+                            <li>Menguasai teknik menentukan asimtot tegak, asimtot datar, dan asimtot miring kurva.</li>
+                            <li>Menggambarkan sketsa grafik fungsi rasional secara akurat beserta titik-titik istimewanya.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Fungsi Rasional & Perilaku Asimtotik
+                        </h3>
+                        <p>
+                            Fungsi rasional didefinisikan sebagai rasio atau hasil bagi dari dua fungsi polinomial, yang ditulis secara umum sebagai \( f(x) = \frac{P(x)}{Q(x)} \), di mana \( P(x) \) dan \( Q(x) \) adalah polinomial dan \( Q(x) \neq 0 \). Karakteristik paling khas dari fungsi rasional adalah grafiknya yang tidak kontinu di beberapa titik serta keberadaan garis-garis pembatas imajiner yang disebut <strong>asimtot</strong>.
+                        </p>
+                        <p>
+                            Analisis perilaku kurva di sekitar asimtot sangat krusial dalam matematika tingkat lanjut:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 pl-2">
+                            <li><strong>Penentuan Asimtot Tegak (Vertical Asymptote):</strong> Terjadi pada nilai \( x = a \) di mana penyebut \( Q(a) = 0 \), namun pembilang \( P(a) \neq 0 \). Secara intuitif, ketika \( x \) mendekati \( a \), nilai mutlak fungsi membesar tanpa batas (\( |f(x)| \to \infty \)). Jika faktor \( (x-a) \) sama-sama bernilai nol di pembilang dan penyebut, titik tersebut bukan asimtot tegak melainkan berupa <strong>lubang (hole)</strong> pada grafik.</li>
+                            <li><strong>Penentuan Asimtot Datar (Horizontal Asymptote):</strong> Menjelaskan perilaku ujung grafik saat \( x \to \infty \) atau \( x \to -\infty \). Ditentukan melalui perbandingan derajat tertinggi polinomial pembilang (\( n \)) dan penyebut (\( m \)):
+                                <div class="p-3 my-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl font-mono text-xs space-y-1 border border-slate-200 dark:border-slate-700">
+                                    <div>1. Jika \( n < m \), asimtot datar adalah \( y = 0 \).</div>
+                                    <div>2. Jika \( n = m \), asimtot datar adalah \( y = \frac{a_n}{b_m} \) (perbandingan koefisien utama).</div>
+                                    <div>3. Jika \( n > m \), tidak ada asimtot datar (kurva meluncur ke tak hingga).</div>
+                                </div>
+                            </li>
+                            <li><strong>Penentuan Asimtot Miring (Slant/Oblique Asymptote):</strong> Terjadi khusus ketika derajat pembilang tepat satu tingkat di atas derajat penyebut (\( n = m + 1 \)). Persamaan garis asimtot miring \( y = mx + c \) diperoleh dengan melakukan pembagian polinomial panjang \( P(x) \div Q(x) \), di mana bagian sisa pembagian akan mendekati nol seiring \( x \to \pm\infty \).</li>
+                        </ul>
+
+                        <!-- Istilah Penting -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-key text-amber-500"></i> Istilah Penting
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm pl-1">
+                                <li><strong>Domain:</strong> Seluruh nilai \( x \) real di mana \( Q(x) \neq 0 \).</li>
+                                <li><strong>Asimtot Tegak:</strong> Garis \( x = a \) pembuat nol penyebut murni.</li>
+                                <li><strong>Asimtot Datar:</strong> Garis \( y = L \) perilaku limit saat \( x \to \pm\infty \).</li>
+                                <li><strong>Asimtot Miring:</strong> Garis linear hasil bagi polinomial berderajat selisih satu.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Interactive Canvas 4.1 -->
+                        <div class="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-lg">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                <div>
+                                    <h4 class="font-bold text-sm text-indigo-300"><i class="fa-solid fa-sliders"></i> Simulasi Interaktif Grafik Rasional</h4>
+                                    <p class="text-xs text-slate-400">Eksplorasi kurva \( f(x) = \frac{a}{x - h} + k \)</p>
+                                </div>
+                                <div class="text-xs font-mono bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-800 text-indigo-300">
+                                    <span id="eq-display-41">f(x) = 1 / (x)</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-center bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                <canvas id="canvas-41" width="500" height="260" class="w-full max-w-lg h-48 rounded"></canvas>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Skala Numerator (\(a\)): <span id="val-a" class="font-bold text-indigo-400">1</span></label>
+                                    <input type="range" id="slider-a" min="-5" max="5" step="1" value="1" class="w-full accent-indigo-500" oninput="updateGraph41()">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Geser Horizontal (\(h\)): <span id="val-h" class="font-bold text-indigo-400">0</span></label>
+                                    <input type="range" id="slider-h" min="-4" max="4" step="1" value="0" class="w-full accent-indigo-500" oninput="updateGraph41()">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Geser Vertikal (\(k\)): <span id="val-k" class="font-bold text-indigo-400">0</span></label>
+                                    <input type="range" id="slider-k" min="-4" max="4" step="1" value="0" class="w-full accent-indigo-500" oninput="updateGraph41()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
+                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
+                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Fungsi Rasional
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <strong>Contoh:</strong> Tentukan asimtot tegak, asimtot datar, dan titik potong sumbu \( Y \) dari fungsi rasional:
+                            $$ f(x) = \frac{2x - 6}{x + 1} $$
+                        </p>
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><strong>Asimtot Tegak:</strong> Penyebut bernilai nol saat \( x + 1 = 0 \implies x = -1 \). Jadi asimtot tegaknya adalah \( x = -1 \).</li>
+                                <li><strong>Asimtot Datar:</strong> Derajat pembilang dan penyebut sama (\( 1 \)), maka perbandingan koefisien tertinggi \( y = \frac{2}{1} = 2 \). Asimtot datarnya adalah \( y = 2 \).</li>
+                                <li><strong>Titik Potong Sumbu Y:</strong> Substitusikan \( x = 0 \implies f(0) = \frac{2(0)-6}{0+1} = -6 \). Titik potongnya adalah \( (0, -6) \).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Soal Mandiri -->
+                    <div class="border-t border-indigo-50 dark:border-slate-800 pt-6 space-y-5">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-indigo-600"></i> 10 Latihan Soal Mandiri (Intermediate - Advanced & AKM)
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Soal 1 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">1. Tentukan asimtot tegak dari fungsi \( f(x) = \frac{x + 2}{x^2 - 4} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Ingat faktorisasi $x^2-4 = (x-2)(x+2)$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x = -2 \) saja</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Faktor $(x+2)$ tercoret, menyisakan asimtot tegak murni di $x = 2$ dan lubang di $x = -2$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x = 2 \) (dengan lubang di \( x = -2 \))</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah. $x=-2$ adalah lubang.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x = -2 \) dan \( x = 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak ada asimtot tegak</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 2 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">2. Cari persamaan asimtot datar dari \( f(x) = \frac{3x^2 - 5x + 1}{2x^2 + x - 6} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah. Periksa perbandingan derajat polinomial.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( y = 0 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Karena derajat pembilang dan penyebut sama ($2$), asimtot datarnya adalah perbandingan koefisien tertinggi $y = \\frac{3}{2}$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( y = \frac{3}{2} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( y = 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak ada asimtot datar</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 3 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">3. Tentukan asimtot miring dari fungsi \( f(x) = \frac{x^2 + 3x + 5}{x - 1} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Melalui pembagian polinomial panjang $(x^2+3x+5) : (x-1)$, diperoleh hasil bagi $x + 4$ dengan sisa $9$. Maka asimtot miringnya $y = x + 4$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( y = x + 4 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah perhitungan pembagian.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( y = x + 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( y = 2x + 1 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak memiliki asimtot miring</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 4 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">4. Diketahui \( f(x) = \frac{ax + b}{cx - 3} \). Jika asimtot tegak \( x = 2 \) dan asimtot datar \( y = 4 \), tentukan nilai perbandingan \( a/c \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 2 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Asimtot datar fungsi rasional linear adalah perbandingan koefisien $x$, yaitu $\\frac{a}{c} = 4$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 4 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 6 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 8 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 5 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">5. Tentukan titik potong sumbu \( Y \) dari grafik fungsi rasional \( f(x) = \frac{2x - 4}{x + 1} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Substitusikan $x = 0 \\implies f(0) = \\frac{-4}{1} = -4$. Titik potong $(0, -4)$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( (0, -4) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( (0, 4) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( (2, 0) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( (-2, 0) \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 6 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">6. (Advanced) Selidiki apakah grafik \( f(x) = \frac{x^3 - 1}{x^2 - 4} \) memiliki asimtot miring, dan tentukan persamaannya jika ada.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Derajat pembilang ($3$) tepat satu tingkat di atas penyebut ($2$), sehingga memiliki asimtot miring yang diperoleh dari hasil bagi pembagian polinomial $y = x$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. Ya, \( y = x \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. Ya, \( y = 2x \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Tidak memiliki asimtot miring</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Ya, \( y = x + 2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 7 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">7. Tentukan daerah asal (domain) dari fungsi \( f(x) = \frac{x^2 - 9}{x^2 - 5x + 6} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x \neq 3 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Penyebut $x^2-5x+6 = (x-2)(x-3) \\neq 0 \\implies x \\neq 2$ dan $x \\neq 3$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x \neq 2 \) dan \( x \neq 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x \neq -3 \) dan \( x \neq 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Semua bilangan real</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 8 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">8. Berapa banyak asimtot tegak yang dimiliki oleh fungsi \( f(x) = \frac{x}{(x^2 + 1)(x - 4)} \)?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Faktor $x^2+1$ tidak pernah bernilai nol untuk bilangan real, sehingga satu-satunya pembuat nol penyebut real adalah $x = 4$. Jadi hanya ada 1 asimtot tegak.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. 1 asimtot</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. 2 asimtot</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. 3 asimtot</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak ada</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 9 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Sanitasi & Lingkungan)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Kompleks</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Dinas Kebersihan suatu kota meneliti tingkat pencemaran limbah pada sebuah waduk. Kadar polutan (dalam bagian per juta/ppm) setelah \( t \) bulan pembersihan dimodelkan oleh fungsi rasional:
+                                    $$ P(t) = \frac{50t + 10}{2t + 1} $$
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Berdasarkan model matematika tersebut, berapakah batas minimal kadar polutan yang dapat dicapai waduk tersebut jika program pembersihan dilakukan dalam jangka waktu yang sangat panjang tak terhingga (\( t \to \infty \))?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah. Perhatikan asimtot datar fungsi.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 0 \) ppm</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Asimtot datar dari $P(t) = \\frac{50t+10}{2t+1}$ ditentukan oleh perbandingan koefisien suku tertinggi karena derajatnya sama ($1$), yaitu $\\frac{50}{2} = 25$ ppm.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 25 \) ppm</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 50 \) ppm</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tak terhingga (\( \infty \))</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 10 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Ekonomi Manufaktur)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Sebuah pabrik memproduksi alat elektronik. Fungsi biaya total produksi per unit (dalam ribuan rupiah) dirumuskan sebagai:
+                                    $$ C(x) = \frac{2x^2 - 4x + 18}{x - 2} $$
+                                    di mana \( x \) adalah jumlah unit yang diproduksi (\( x > 2 \)).
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Tentukan persamaan garis asimtot miring yang menggambarkan tren fungsi biaya rata-rata tersebut untuk produksi skala sangat besar.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah. Periksa kembali sisa bagi polinomial.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( y = 2x - 4 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Lakukan pembagian polinomial $(2x^2-4x+18) : (x-2)$. Hasil baginya adalah $2x$ dengan sisa $18$. Maka asimtot miringnya adalah $y = 2x$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( y = 2x \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( y = 2x + 9 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( y = x + 2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB 4.2 -->
+            <div id="content-sub42" class="tab-content hidden space-y-6">
+                <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-indigo-100/80 dark:border-slate-800 space-y-6">
+                    <div class="border-b border-indigo-50 dark:border-slate-800 pb-5">
+                        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-extrabold tracking-wider uppercase mb-2">Sub-Bab 4.2</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Fungsi Eksponensial dan Logaritma</h2>
+                    </div>
+
+                    <!-- Tujuan Pembelajaran -->
+                    <div class="bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-purple-500/10 p-6 rounded-2xl border border-indigo-200/60 dark:border-indigo-900/40">
+                        <h3 class="font-bold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2.5 mb-3">
+                            <div class="bg-indigo-600 text-white p-1.5 rounded-lg"><i class="fa-solid fa-bullseye text-xs"></i></div> Tujuan Pembelajaran
+                        </h3>
+                        <ul class="list-disc list-inside text-sm space-y-1.5 text-slate-700 dark:text-slate-300 font-medium">
+                            <li>Memahami karakteristik grafik fungsi eksponensial dan logaritma sebagai fungsi invers satu sama lain.</li>
+                            <li>Menguasai sifat-sifat dasar logaritma dan eksponen dalam menyelesaikan persamaan kompleks.</li>
+                            <li>Mengaplikasikan model matematika pertumbuhan eksponensial dan peluruhan dalam kehidupan nyata.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Eksponen & Logaritma sebagai Invers
+                        </h3>
+                        <p>
+                            Fungsi eksponensial memiliki bentuk umum \( f(x) = a \cdot b^x + c \) (dengan \( b > 0 \) dan \( b \neq 1 \)). Grafik fungsi eksponensial murni selalu melalui titik \( (0, 1) \) dan memiliki asimtot datar berupa sumbu \( X \) (\( y = 0 \)). Pertumbuhan eksponensial ditandai oleh kenaikan nilai yang sangat drastis (melengkung ke atas) jika basis \( b > 1 \), atau peluruhan eksponensial jika \( 0 < b < 1 \).
+                        </p>
+                        <p>
+                            Sebaliknya, fungsi logaritma \( f(x) = \log_b(x) \) adalah invers sejati dari fungsi eksponensial. Secara geometris, grafik fungsi logaritma merupakan hasil pencerminan dari grafik fungsi eksponensial terhadap garis diagonal identitas \( y = x \). Beberapa prinsip penting meliputi:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 pl-2">
+                            <li><strong>Syarat Domain & Numerus:</strong> Karena logaritma adalah invers eksponen yang hasilnya selalu positif, maka besaran numerus di dalam logaritma wajib bernilai positif strict (\( x > 0 \)). Basis logaritma juga harus memenuhi \( b > 0 \) dan \( b \neq 1 \).</li>
+                            <li><strong>Sifat-Sifat Aljabar Logaritma:</strong> Meliputi sifat penjumlahan perkalian (\( \log_b(xy) = \log_b x + \log_b y \)), pengurangan pembagian (\( \log_b(\frac{x}{y}) = \log_b x - \log_b y \)), perpangkatan numerus (\( \log_b(x^k) = k \log_b x \)), serta rumus perubahan basis (\( \log_b a = \frac{\log_c a}{\log_c b} \)).</li>
+                            <li><strong>Bilangan Natural (\( e \)):</strong> Konstanta matematika penting \( e \approx 2{,}71828 \) yang menjadi basis utama fungsi eksponensial alami (\( e^x \)) dan logaritma natural (\( \ln x \)), yang banyak digunakan dalam pemodelan kalkulus pertumbuhan populasi dan ekonomi keuangan.</li>
+                        </ul>
+
+                        <!-- Istilah Penting -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-key text-amber-500"></i> Istilah Penting
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm pl-1">
+                                <li><strong>Basis:</strong> Bilangan pokok pangkat atau logaritma (\( b > 0, b \neq 1 \)).</li>
+                                <li><strong>Bilangan Euler (\( e \)):</strong> Konstanta pertumbuhan kontinu natural.</li>
+                                <li><strong>Numerus:</strong> Argumen positif yang dikenai operasi logaritma.</li>
+                                <li><strong>Invers Saling Cermin:</strong> Simetri kurva terhadap garis sumbu \( y = x \).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Interactive Canvas 4.2 -->
+                        <div class="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-lg">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                <div>
+                                    <h4 class="font-bold text-sm text-indigo-300"><i class="fa-solid fa-sliders"></i> Simulasi Interaktif Grafik Eksponen</h4>
+                                    <p class="text-xs text-slate-400">Eksplorasi kurva \( f(x) = b^x \)</p>
+                                </div>
+                                <div class="text-xs font-mono bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-800 text-indigo-300">
+                                    <span id="eq-display-42">f(x) = 2^x</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-center bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                <canvas id="canvas-42" width="500" height="260" class="w-full max-w-lg h-48 rounded"></canvas>
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1 text-xs">Basis Eksponen (\(b\)): <span id="val-base" class="font-bold text-indigo-400">2</span></label>
+                                <input type="range" id="slider-base" min="1.2" max="4" step="0.2" value="2" class="w-full accent-indigo-500" oninput="updateGraph42()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
+                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
+                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Eksponen & Logaritma
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <strong>Contoh:</strong> Tentukan himpunan penyelesaian dari persamaan logaritma:
+                            $$ \log_3(x) + \log_3(x - 2) = 1 $$
+                        </p>
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Gunakan sifat penjumlahan logaritma: \( \log_3(x(x - 2)) = 1 \).</li>
+                                <li>Ubah ke bentuk eksponen: \( x(x - 2) = 3^1 \implies x^2 - 2x - 3 = 0 \).</li>
+                                <li>Faktorkan persamaan kuadrat: \( (x - 3)(x + 1) = 0 \implies x = 3 \) atau \( x = -1 \).</li>
+                                <li>Uji syarat numerus (\( x > 0 \) dan \( x - 2 > 0 \implies x > 2 \)): Nilai \( x = -1 \) ditolak. Jadi penyelesaiannya adalah \( x = 3 \).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Soal Mandiri -->
+                    <div class="border-t border-indigo-50 dark:border-slate-800 pt-6 space-y-5">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-indigo-600"></i> 10 Latihan Soal Mandiri (Intermediate - Advanced & AKM)
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Soal 1 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">1. Selesaikan persamaan eksponensial: \( 3^{2x-1} = 27^{x+2} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x = 3 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! $3^{2x-1} = (3^3)^{x+2} \\implies 2x - 1 = 3x + 6 \\implies x = -7$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x = -7 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x = 7 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( x = -3 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 2 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">2. Tentukan nilai \( x \) yang memenuhi \( \log_2(x - 1) + \log_2(x + 2) = 2 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Periksa domain.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x = -3 \) atau \( x = 2 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Akar kuadrat memberikan $x = -3$ dan $x = 2$. Karena syarat numerus $x > 1$, maka $x = -3$ ditolak, sehingga $x = 2$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x = 2 \) saja</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x = -3 \) saja</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak ada</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 3 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">3. Jika \( \log_3 2 = a \) dan \( \log_3 5 = b \), nyatakan \( \log_3 45 \) dalam \( a \) dan \( b \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( a + b \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! $\\log_3(9 \\times 5) = \\log_3(3^2) + \\log_3(5) = 2 + b$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 2 + b \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 2a + b \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( a + 2b \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 4 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">4. Tentukan daerah asal fungsi \( f(x) = \log(x^2 - 5x + 6) \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 2 < x < 3 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Syarat numerus $x^2-5x+6 > 0 \\implies (x-2)(x-3) > 0 \\implies x < 2$ atau $x > 3$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x < 2 \) atau \( x > 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x > 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( x < 2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 5 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">5. Selesaikan pertidaksamaan eksponensial: \( \left(\frac{1}{3}\right)^{x^2 - 2x} > 9^{x-2} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Basis $\\left(3^{-1}\\right)^{x^2-2x} > (3^2)^{x-2} \\implies -x^2+2x > 2x-4 \\implies x^2 < 4 \\implies -2 < x < 2$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( -2 < x < 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x < -2 \) atau \( x > 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 0 < x < 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( x > 2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 6 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">6. Tentukan invers dari fungsi \( f(x) = 2^{3x - 1} + 4 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $y = 2^{3x-1}+4 \\implies y-4 = 2^{3x-1} \\implies 3x-1 = \\log_2(y-4) \\implies x = \\frac{1}{3}(\\log_2(y-4)+1)$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( f^{-1}(x) = \frac{1}{3}(\log_2(x-4) + 1) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( f^{-1}(x) = 3\log_2(x-4) - 1 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( f^{-1}(x) = \log_2(3x-1) + 4 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( f^{-1}(x) = \frac{1}{3}\log_2(x) + 4 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 7 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">7. (Advanced) Cari semua nilai \( x \) yang memenuhi persamaan \( \log_x(9) = 2 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $\\log_x(9) = 2 \\implies x^2 = 9 \\implies x = \\pm 3$. Karena syarat basis logaritma $x > 0$ dan $x \\neq 1$, maka nilai $x = -3$ ditolak, sehingga $x = 3$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x = 3 \) saja</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah. Basis tidak boleh negatif.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x = 3 \) atau \( x = -3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x = 9 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak ada</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 8 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">8. Tentukan jumlah akar-akar real dari persamaan eksponensial \( 2^{2x} - 5 \cdot 2^x + 4 = 0 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Misal $p = 2^x \\implies p^2-5p+4=0 \\implies (p-1)(p-4)=0 \\implies p=1, 4$. Untuk $p=1 \\implies x=0$, untuk $p=4 \\implies x=2$. Jumlah akar = $0 + 2 = 2$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 4 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 5 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 0 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 9 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Biologi & Virologi)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Literasi Sains</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Dalam uji laboratorium bioteknologi, pertumbuhan koloni bakteri jenis tertentu mengikuti model eksponensial berdasar fungsi waktu:
+                                    $$ N(t) = 400 \cdot 2^{0,25t} $$
+                                    di mana \( N(t) \) adalah jumlah sel bakteri setelah \( t \) jam.
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Berapa jam waktu yang dibutuhkan agar jumlah populasi bakteri tersebut tepat mencapai 12.800 sel?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah. Periksa kembali perhitungan logaritma basis 2.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 12 \) jam</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! $12800 = 400 \\cdot 2^{0,25t} \\implies 32 = 2^{0,25t} \\implies 2^5 = 2^{0,25t} \\implies 0,25t = 5 \\implies t = 20$ jam.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 20 \) jam</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 25 \) jam</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 32 \) jam</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 10 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Seismologi & Geofisika)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah Kompleks</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Dalam pengukuran kekuatan gempa bumi, skala magnitudo Richter dirumuskan menggunakan fungsi logaritma basis 10:
+                                    $$ M = \log_{10}\left(\frac{I}{I_0}\right) $$
+                                    di mana \( I \) adalah intensitas gelombang gempa dan \( I_0 \) adalah intensitas acuan minimum. Badan Meteorologi mencatat dua kejadian gempa dengan kekuatan 6,4 SR dan 8,4 SR.
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Berapa kali lipat perbandingan besarnya energi atau intensitas gelombang gempa (\( I \)) antara gempa 8,4 SR dibandingkan dengan 6,4 SR?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 2 \) kali lipat</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 20 \) kali lipat</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 1.000 \) kali lipat</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Selisih magnitudo adalah $8,4 - 6,4 = 2,0$. Karena skala Richter berbasis logaritma basis 10, selisih 2 tingkat magnitudo berarti perbandingan intensitas gelombang adalah $10^2 = 100$ kali lipat.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 100 \) kali lipat</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB 4.3 -->
+            <div id="content-sub43" class="tab-content hidden space-y-6">
+                <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-indigo-100/80 dark:border-slate-800 space-y-6">
+                    <div class="border-b border-indigo-50 dark:border-slate-800 pb-5">
+                        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-extrabold tracking-wider uppercase mb-2">Sub-Bab 4.3</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Fungsi Modulus, Fungsi Tangga, dan Piecewise</h2>
+                    </div>
+
+                    <!-- Tujuan Pembelajaran -->
+                    <div class="bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-purple-500/10 p-6 rounded-2xl border border-indigo-200/60 dark:border-indigo-900/40">
+                        <h3 class="font-bold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2.5 mb-3">
+                            <div class="bg-indigo-600 text-white p-1.5 rounded-lg"><i class="fa-solid fa-bullseye text-xs"></i></div> Tujuan Pembelajaran
+                        </h3>
+                        <ul class="list-disc list-inside text-sm space-y-1.5 text-slate-700 dark:text-slate-300 font-medium">
+                            <li>Memahami konsep nilai mutlak secara aljabar maupun geometris sebagai jarak titik dari titik asal.</li>
+                            <li>Menguasai cara menggambar dan membaca grafik fungsi tangga (*floor/ceil*) serta fungsi sepotong-sepotong (*piecewise*).</li>
+                            <li>Menyelesaikan persamaan dan pertidaksamaan yang melibatkan modulus secara sistematis.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Modulus, Tangga, & Fungsi Piecewise
+                        </h3>
+                        <p>
+                            Dalam analisis matematika lanjut, tidak semua fenomena dapat dimodelkan oleh satu persamaan mulus. 
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 pl-2">
+                            <li><strong>Fungsi Nilai Mutlak (Modulus):</strong> Didefinisikan secara piecewise sebagai \( |x| = x \) jika \( x \ge 0 \) dan \( |x| = -x \) jika \( x < 0 \). Secara geometris di bidang koordinat Cartesius, grafik \( f(x) = |x - h| + k \) membentuk kurva simetris berbentuk huruf 'V' dengan titik sudut (vertex) di koordinat \((h, k)\). Nilai mutlak selalu menghasilkan keluaran non-negatif (\( \ge 0 \)).</li>
+                            <li><strong>Fungsi Tangga (Step Function):</strong> Pemetaan yang membulatkan nilai real ke bilangan bulat terdekat, seperti fungsi *floor* (\( \lfloor x \rfloor \), bilangan bulat terbesar yang kurang dari atau sama dengan \( x \)) dan fungsi *ceil* (\( \lceil x \rceil \), bilangan bulat terkecil yang lebih besar dari atau sama dengan \( x \)). Grafik fungsi ini menyerupai anak tangga terputus-putus.</li>
+                            <li><strong>Fungsi Sepotong-Sepotong (Piecewise Function):</strong> Fungsi yang didefinisikan oleh beberapa sub-fungsi berbeda tergantung pada interval domain tertentu. Dalam menganalisis kontinuitas fungsi piecewise, kita harus memastikan nilai batas kiri dan batas kanan pada titik transisi bernilai sama persis.</li>
+                        </ul>
+
+                        <!-- Istilah Penting -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-key text-amber-500"></i> Istilah Penting
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm pl-1">
+                                <li><strong>Modulus:</strong> Besaran non-negatif pengukur jarak mutlak.</li>
+                                <li><strong>Titik Sudut (Vertex):</strong> Puncak patahan kurva nilai mutlak V.</li>
+                                <li><strong>Fungsi Tangga:</strong> Pemetaan diskrit bertingkat (*floor/ceil*).</li>
+                                <li><strong>Piecewise:</strong> Fungsi bersyarat multi-interval domain.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Interactive Canvas 4.3 -->
+                        <div class="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-lg">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                <div>
+                                    <h4 class="font-bold text-sm text-indigo-300"><i class="fa-solid fa-sliders"></i> Simulasi Interaktif Modulus</h4>
+                                    <p class="text-xs text-slate-400">Eksplorasi kurva \( f(x) = |x - h| + k \)</p>
+                                </div>
+                                <div class="text-xs font-mono bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-800 text-indigo-300">
+                                    <span id="eq-display-43">f(x) = |x|</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-center bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                <canvas id="canvas-43" width="500" height="260" class="w-full max-w-lg h-48 rounded"></canvas>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Geser Horizontal (\(h\)): <span id="val-h43" class="font-bold text-indigo-400">0</span></label>
+                                    <input type="range" id="slider-h43" min="-4" max="4" step="1" value="0" class="w-full accent-indigo-500" oninput="updateGraph43()">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Geser Vertikal (\(k\)): <span id="val-k43" class="font-bold text-indigo-400">0</span></label>
+                                    <input type="range" id="slider-k43" min="-4" max="4" step="1" value="0" class="w-full accent-indigo-500" oninput="updateGraph43()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
+                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
+                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Fungsi Modulus
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <strong>Contoh:</strong> Tentukan himpunan penyelesaian dari pertidaksamaan nilai mutlak:
+                            $$ |3x - 2| \le 7 $$
+                        </p>
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Berdasarkan sifat dasar pertidaksamaan mutlak (\( |a| \le c \iff -c \le a \le c \)), ubah menjadi: \( -7 \le 3x - 2 \le 7 \).</li>
+                                <li>Tambahkan \( 2 \) ke semua ruas: \( -7 + 2 \le 3x \le 7 + 2 \implies -5 \le 3x \le 9 \).</li>
+                                <li>Bagikan dengan \( 3 \): \( -\frac{5}{3} \le x \le 3 \).</li>
+                                <li>Himpunan penyelesaiannya adalah interval tertutup \( \left[-\frac{5}{3}, 3\right] \).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Soal Mandiri -->
+                    <div class="border-t border-indigo-50 dark:border-slate-800 pt-6 space-y-5">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-indigo-600"></i> 10 Latihan Soal Mandiri (Intermediate - Advanced & AKM)
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Soal 1 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">1. Selesaikan persamaan nilai mutlak: \( |2x - 3| = 5 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( \{-1, 1\} \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! $2x - 3 = 5 \\implies x = 4$ atau $2x - 3 = -5 \\implies x = -1$. Himpunan penyelesaian $\\{-1, 4\\}$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( \{-1, 4\} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( \{1, 4\} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( \{-4, 1\} \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 2 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">2. Tentukan himpunan penyelesaian pertidaksamaan \( |x^2 - 4| \le 5 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $-5 \\le x^2 - 4 \\le 5 \\implies -1 \\le x^2 \\le 9$. Karena $x^2 \\ge -1$ selalu benar, fokus pada $x^2 \\le 9 \\implies -3 \\le x \\le 3$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( -3 \le x \le 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( -1 \le x \le 4 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x \le -3 \) atau \( x \ge 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 0 \le x \le 3 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 3 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">3. Evaluasi nilai dari fungsi tangga \( \lfloor 3{,}7 \rfloor + \lceil -1{,}2 \rceil \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $\\lfloor 3{,}7 \\rfloor = 3$ dan $\\lceil -1{,}2 \\rceil = -1$. Hasilnya $3 + (-1) = 2$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 1 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 5 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 4 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">4. Diketahui \( f(x) = \begin{cases} 2x + a, & x < 2 \\ x^2 - 1, & x \ge 2 \end{cases} \). Tentukan nilai \( a \) agar fungsi tersebut kontinu di \( x = 2 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 1 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Syarat kontinuitas di $x=2$: $2(2) + a = 2^2 - 1 \\implies 4 + a = 3 \\implies a = -1$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( -1 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( -2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 5 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">5. Tentukan daerah asal dan daerah hasil dari fungsi \( f(x) = \sqrt{|x| - 3} \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Syarat akar $|x|-3 \\ge 0 \\implies |x| \\ge 3 \\implies x \\le -3$ atau $x \\ge 3$. Range $y \\ge 0$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. Domain: \( x \le -3 \) atau \( x \ge 3 \), Range: \( y \ge 0 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. Domain: \( -3 \le x \le 3 \), Range: \( y \ge 0 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Domain: semua real, Range: \( y \ge 0 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Domain: \( x \ge 3 \), Range: semua real</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 6 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">6. Selesaikan pertidaksamaan nilai mutlak: \( |x - 1| > 2x + 3 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Kuadratkan kedua ruas $(x-1)^2 > (2x+3)^2 \\implies x^2-2x+1 > 4x^2+12x+9 \\implies 3x^2+14x+8 < 0 \\implies (3x+2)(x+4) < 0 \\implies -4 < x < -\\frac{2}{3}$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x < -\frac{2}{3} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( -4 < x < -\frac{2}{3} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x > -\frac{2}{3} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Tidak ada penyelesaian</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 7 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">7. (Advanced) Sketsakan grafik dari fungsi \( f(x) = |x - \lfloor x \rfloor| \) dan tentukan periodenya.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $x - \\lfloor x \\rfloor$ adalah fungsi desimal berulang (fractional part) dengan periode $1$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. Periode \( 1 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. Periode \( 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Tidak periodik</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Periode \( \pi \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 8 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">8. Tentukan luas daerah yang dibatasi oleh kurva \( f(x) = 4 - |x| \) dan sumbu \( X \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Kurva membentuk segitiga dengan alas $8$ dan tinggi $4$. Luas = $\\frac{1}{2} \\times 8 \\times 4 = 16$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 16 \) satuan luas</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 8 \) satuan luas</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 32 \) satuan luas</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 4 \) satuan luas</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 9 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Kendali Mutu Industri)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Analitis</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Pabrik tekstil memproduksi kain dengan panjang ideal \( 100\text{ meter} \). Syarat kelulusan uji mutu:
+                                    $$ |x - 100| \le 0,75 $$
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Tentukan rentang interval panjang kain (\( x \)) dalam meter yang memenuhi kriteria lulus uji kualitas.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 99,00 \le x \le 101,00 \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! $|x - 100| \\le 0,75 \\implies 99,25 \\le x \\le 100,75$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 99,25 \le x \le 100,75 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 98,50 \le x \le 101,50 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 100,00 \le x \le 100,75 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 10 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Transportasi Publik)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah Kompleks</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Layanan transportasi massal menggunakan fungsi tangga:
+                                    $$ T(d) = 5000 + 2000 \cdot \lceil d - 1 \rceil $$
+                                    Seorang penumpang melakukan perjalanan sejauh \( 4,3\text{ kilometer} \).
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Berapakah total biaya tarif yang harus dibayarkan oleh penumpang tersebut?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( \text{Rp11.000} \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Jarak $d = 4,3 \\implies \\lceil 3,3 \\rceil = 4$. Total tarif = $5000 + 2000(4) = \\text{Rp13.000}$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( \text{Rp13.000} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( \text{Rp15.000} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( \text{Rp17.000} \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB 4.4 -->
+            <div id="content-sub44" class="tab-content hidden space-y-6">
+                <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-indigo-100/80 dark:border-slate-800 space-y-6">
+                    <div class="border-b border-indigo-50 dark:border-slate-800 pb-5">
+                        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-extrabold tracking-wider uppercase mb-2">Sub-Bab 4.4</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Fungsi Trigonometri dan Grafiknya</h2>
+                    </div>
+
+                    <!-- Tujuan Pembelajaran -->
+                    <div class="bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-purple-500/10 p-6 rounded-2xl border border-indigo-200/60 dark:border-indigo-900/40">
+                        <h3 class="font-bold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2.5 mb-3">
+                            <div class="bg-indigo-600 text-white p-1.5 rounded-lg"><i class="fa-solid fa-bullseye text-xs"></i></div> Tujuan Pembelajaran
+                        </h3>
+                        <ul class="list-disc list-inside text-sm space-y-1.5 text-slate-700 dark:text-slate-300 font-medium">
+                            <li>Memahami konsep fungsi trigonometri dasar (sinus, kosinus, tangen) pada lingkaran satuan dan kuadran.</li>
+                            <li>Menganalisis parameter grafik gelombang umum: amplitudo, periode, pergeseran fasa, dan garis kesetimbangan.</li>
+                            <li>Mengaplikasikan pemodelan fungsi trigonometri pada fenomena gelombang periodik di dunia nyata.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Penjelasan Materi & Konsep Utama (Diperluas Lebih Mendalam) -->
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-indigo-600"></i> Konsep Mendalam Gelombang Trigonometri & Parameternya
+                        </h3>
+                        <p>
+                            Fungsi trigonometri dasar diturunkan dari koordinat titik pada lingkaran satuan (radius \( r = 1 \)). Ketika nilai sudut dipetakan terhadap sumbu waktu atau jarak, grafik yang terbentuk adalah osilasi gelombang periodik berulang. Bentuk umum fungsi gelombang sinusoidal adalah:
+                            $$ f(x) = A \sin(kx - c) + D $$
+                        </p>
+                        <p>
+                            Setiap parameter dalam persamaan gelombang umum memiliki makna fisis dan geometris yang spesifik:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 pl-2">
+                            <li><strong>Amplitudo (\( |A| \)):</strong> Menyatakan simpangan atau tinggi maksimum gelombang dari garis kesetimbangan tengah. Nilainya selalu diambil positif.</li>
+                            <li><strong>Periode (\( T \)):</strong> Panjang interval horizontal yang dibutuhkan untuk menempuh satu siklus osilasi penuh, dihitung dengan rumus \( T = \frac{2\pi}{k} \). Frekuensi gelombang (\( f \)) adalah kebalikan dari periode (\( f = \frac{1}{T} \)).</li>
+                            <li><strong>Pergeseran Fasa (\( \frac{c}{k} \)):</strong> Menggeser posisi awal gelombang ke arah horizontal kanan atau kiri di sepanjang sumbu \( X \).</li>
+                            <li><strong>Garis Kesetimbangan (\( D \)):</strong> Menggeser seluruh kurva gelombang secara vertikal ke atas atau ke bawah sejauh \( D \) satuan, yang sekaligus menjadi nilai rata-rata dari nilai maksimum dan minimum gelombang.</li>
+                        </ul>
+
+                        <!-- Istilah Penting -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-key text-amber-500"></i> Istilah Penting
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm pl-1">
+                                <li><strong>Amplitudo:</strong> Simpangan maksimum dari sumbu tengah (\( |A| \)).</li>
+                                <li><strong>Periode:</strong> Panjang satu gelombang penuh (\( T = \frac{2\pi}{k} \)).</li>
+                                <li><strong>Frekuensi:</strong> Jumlah gelombang per satuan waktu.</li>
+                                <li><strong>Garis Kesetimbangan:</strong> Sumbu tengah vertikal gelombang (\( D \)).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Interactive Canvas 4.4 -->
+                        <div class="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-lg">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                <div>
+                                    <h4 class="font-bold text-sm text-indigo-300"><i class="fa-solid fa-sliders"></i> Simulasi Interaktif Gelombang Sinus</h4>
+                                    <p class="text-xs text-slate-400">Eksplorasi kurva \( f(x) = A \sin(kx) \)</p>
+                                </div>
+                                <div class="text-xs font-mono bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-800 text-indigo-300">
+                                    <span id="eq-display-44">f(x) = 1 sin(1x)</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-center bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                <canvas id="canvas-44" width="500" height="260" class="w-full max-w-lg h-48 rounded"></canvas>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Amplitudo (\(A\)): <span id="val-amp" class="font-bold text-indigo-400">1</span></label>
+                                    <input type="range" id="slider-amp" min="0.5" max="3" step="0.5" value="1" class="w-full accent-indigo-500" oninput="updateGraph44()">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Frekuensi (\(k\)): <span id="val-freq" class="font-bold text-indigo-400">1</span></label>
+                                    <input type="range" id="slider-freq" min="1" max="4" step="1" value="1" class="w-full accent-indigo-500" oninput="updateGraph44()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contoh Soal & Pembahasan Konsep (Ditempatkan SEBELUM Latihan Soal) -->
+                    <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-100 dark:border-slate-700 space-y-4">
+                        <h3 class="font-extrabold text-sm text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Soal & Pembahasan Konsep: Fungsi Trigonometri
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <strong>Contoh:</strong> Tentukan amplitudo, periode, dan nilai maksimum dari fungsi gelombang:
+                            $$ f(x) = 3 \cos(2x) + 1 $$
+                        </p>
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-slate-800 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <p><strong>Penyelesaian langkah demi langkah:</strong></p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><strong>Amplitudo:</strong> Nilai mutlak dari koefisien kosinus \( |3| = 3 \).</li>
+                                <li><strong>Periode:</strong> Dihitung dengan rumus \( T = \frac{2\pi}{k} = \frac{2\pi}{2} = \pi \).</li>
+                                <li><strong>Nilai Maksimum:</strong> Kesetimbangan ditambah amplitudo: \( 1 + 3 = 4 \).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Soal Mandiri -->
+                    <div class="border-t border-indigo-50 dark:border-slate-800 pt-6 space-y-5">
+                        <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-indigo-600"></i> 10 Latihan Soal Mandiri (Intermediate - Advanced & AKM)
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Soal 1 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">1. Tentukan periode dan amplitudo dari fungsi \( f(x) = -2 \sin(3x) + 4 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Amplitudo selalu positif.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. Amplitudo = -2, Periode = \( \frac{2\pi}{3} \)</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Amplitudo adalah nilai mutlak $|-2| = 2$ dan periode gelombang adalah $\\frac{2\pi}{3}$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. Amplitudo = 2, Periode = \( \frac{2\pi}{3} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Amplitudo = 2, Periode = \( 3\pi \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Amplitudo = 4, Periode = \( 2\pi \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 2 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">2. Tentukan nilai maksimum dan minimum dari fungsi \( f(x) = 5 \cos(x) - 12 \sin(x) + 10 \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Amplitudo gabungan $\\sqrt{5^2 + (-12)^2} = 13$. Maks = $10 + 13 = 23$, Min = $10 - 13 = -3$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. Maks: \( 23 \), Min: \( -3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. Maks: \( 17 \), Min: \( 3 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Maks: \( 15 \), Min: \( -5 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Maks: \( 25 \), Min: \( -2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 3 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">3. Tentukan persamaan grafik fungsi sinus yang memiliki amplitudo \( 4 \), periode \( \pi \), dan melalui titik \( (0, 0) \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $A = 4$, $k = \\frac{2\pi}{\\pi} = 2$. Maka $f(x) = 4\\sin(2x)$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( f(x) = 4 \sin(2x) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( f(x) = 4 \sin(x) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( f(x) = 2 \sin(4x) \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( f(x) = 4 \cos(2x) \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 4 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">4. Selesaikan persamaan trigonometri \( \sin\left(x + \frac{\pi}{6}\right) = \frac{1}{2} \) untuk \( 0 \le x \le 2\pi \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $x + \\frac{\\pi}{6} = \\frac{\\pi}{6} \\implies x = 0$, atau $x + \\frac{\\pi}{6} = \\frac{5\\pi}{6} \\implies x = \\frac{2\\pi}{3}$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( x = 0 \) atau \( x = \frac{2\pi}{3} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( x = \frac{\pi}{6} \) atau \( x = \frac{\pi}{3} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( x = \frac{\pi}{3} \) atau \( x = \pi \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( x = 0 \) atau \( x = \pi \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 5 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">5. Tentukan pergeseran fasa dari fungsi \( f(x) = 2 \sin\left(4x - \frac{\pi}{2}\right) \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $2\\sin\\left(4\\left(x - \\frac{\\pi}{8}\\right)\\right)$. Pergeseran fasa sebesar $\\frac{\\pi}{8}$ ke kanan.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( \frac{\pi}{8} \) ke kanan</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( \frac{\pi}{2} \) ke kanan</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( \frac{\pi}{8} \) ke kiri</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( \frac{\pi}{4} \) ke kanan</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 6 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">6. (Advanced) Jika gelombang suara dimodelkan oleh \( s(t) = 0{,}5 \sin(200\pi t) \), tentukan frekuensi gelombang tersebut (dalam Hertz).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $2\\pi f = 200\\pi \\implies f = 100$ Hz.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 100 \) Hz</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( 50 \) Hz</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 200 \) Hz</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( 50\pi \) Hz</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 7 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">7. Tentukan titik potong grafik \( f(x) = \sin(x) \) dengan sumbu \( X \) pada interval \( 0 \le x \le 2\pi \).</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! $\\sin(x) = 0$ terjadi saat $x = 0$, $\\pi$, dan $2\\pi$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( 0, \pi, 2\pi \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( \frac{\pi}{2}, \frac{3\pi}{2} \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( 0, \frac{\pi}{2}, \pi \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( \pi, 2\pi \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 8 -->
+                            <div class="p-4 rounded-2xl border border-indigo-100 dark:border-slate-800 bg-indigo-50/20 dark:bg-slate-800/20 space-y-3 shadow-sm">
+                                <p class="text-sm font-semibold">8. Tentukan daerah hasil (range) dari fungsi \( f(x) = 3 \tan^2(x) - 1 \) di dalam daerah asalnya.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, true, 'Benar! Karena $\\tan^2(x) \\ge 0$, nilai minimum $3(0) - 1 = -1$. Range: $y \\ge -1$.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( y \ge -1 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( -1 \le y \le 2 \)</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Semua bilangan real</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( y \le 2 \)</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-lg"></div>
+                            </div>
+
+                            <!-- Soal 9 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Oseanografi)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Penalaran Literasi Sains</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Ketinggian permukaan air laut \( h \) (dalam meter) terhadap waktu tengah malam (\( t \) jam) dimodelkan oleh:
+                                    $$ h(t) = 3 \sin\left(\frac{\pi}{6}t\right) + 5 $$
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Pada jam ke berapa sajakah ketinggian air laut mencapai titik maksimum pertamanya setelah tengah malam (\( t = 0 \))?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. Jam ke-1</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! Maksimum saat $\\sin(\\frac{\\pi}{6}t) = 1 \\implies \\frac{\\pi}{6}t = \\frac{\\pi}{2} \\implies t = 3$ jam.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. Jam ke-3</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. Jam ke-6</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. Jam ke-12</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+
+                            <!-- Soal 10 (Model AKM / ANBK) -->
+                            <div class="p-5 rounded-2xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 space-y-3 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-1 bg-indigo-600 text-white rounded-lg text-xs font-extrabold uppercase tracking-wider">Soal Model AKM / ANBK (Konteks Teknik Elektro)</span>
+                                    <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Level: Pemecahan Masalah Kompleks</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    <strong>Wacana:</strong> Tegangan listrik bolak-balik (AC) rumah tangga dimodelkan oleh persamaan:
+                                    $$ V(t) = 220 \sqrt{2} \sin(100\pi t) $$
+                                    di mana \( V \) adalah tegangan dalam Volt dan \( t \) waktu dalam detik.
+                                </p>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    Pertanyaan: Berapakah nilai waktu terkecil \( t \) (dalam detik) saat tegangan listrik gelombang AC tersebut bernilai nol untuk pertama kalinya setelah \( t = 0 \)?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">A. \( \frac{1}{50} \) detik</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">B. \( \frac{1}{200} \) detik</button>
+                                    <button onclick="checkAnswer(this, true, 'Benar! $\\sin(100\\pi t) = 0 \\implies 100\\pi t = \\pi \\implies t = \\frac{1}{100}$ detik.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">C. \( \frac{1}{100} \) detik</button>
+                                    <button onclick="checkAnswer(this, false, 'Salah.')" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-500 transition">D. \( \frac{1}{25} \) detik</button>
+                                </div>
+                                <div class="feedback-box hidden text-xs font-semibold p-3 rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-indigo-100 dark:border-slate-800 py-6 mt-12 text-center text-xs text-slate-500 font-medium">
+        <p>&copy; 2026 Matematika Kelas 11 SMA</p>
+    </footer>
+
+    <!-- Interactive JS Script & MathJax Trigger -->
+    <script>
+        function renderMath() {
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise().catch((err) => console.log('MathJax error:', err));
+            }
+        }
+
+        function switchTab(subId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('content-' + subId).classList.remove('hidden');
+
+            document.querySelectorAll('aside nav button').forEach(btn => {
+                btn.className = "w-full text-left px-4 py-3 rounded-2xl font-semibold text-sm transition flex items-center space-x-3 hover:bg-indigo-50 dark:hover:bg-slate-800/60 text-slate-600 dark:text-slate-300";
+                const iconBox = btn.querySelector('div');
+                iconBox.className = "bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 p-2 rounded-xl";
+            });
+
+            const activeBtn = document.getElementById('btn-' + subId);
+            activeBtn.className = "w-full text-left px-4 py-3 rounded-2xl font-semibold text-sm transition flex items-center space-x-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-500/20";
+            const activeIconBox = activeBtn.querySelector('div');
+            activeIconBox.className = "bg-white/20 p-2 rounded-xl text-white";
+
+            const progressMap = { 'sub41': '25%', 'sub42': '50%', 'sub43': '75%', 'sub44': '100%' };
+            document.getElementById('progress-bar').style.width = progressMap[subId];
+            document.getElementById('progress-text').innerText = progressMap[subId];
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                initAllCanvases();
+                renderMath();
+            }, 60);
+        }
+
+        function checkAnswer(button, isCorrect, explanation) {
+            const container = button.closest('div').parentElement;
+            const feedbackBox = container.querySelector('.feedback-box');
+            
+            container.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('border-indigo-600', 'bg-indigo-50', 'dark:bg-indigo-950/40', 'border-emerald-500', 'bg-emerald-50', 'border-rose-500', 'bg-rose-50');
+            });
+
+            feedbackBox.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'dark:bg-emerald-950/60', 'dark:text-emerald-300', 'bg-rose-100', 'text-rose-900', 'dark:bg-rose-950/60', 'dark:text-rose-300');
+
+            if (isCorrect) {
+                button.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/40');
+                feedbackBox.classList.add('bg-emerald-100', 'text-emerald-900', 'dark:bg-emerald-950/60', 'dark:text-emerald-300');
+                feedbackBox.innerHTML = `<div class="flex items-center gap-2 font-bold mb-1"><i class="fa-solid fa-circle-check text-emerald-600"><span>Analisis Benar:</span></i></div>${explanation}`;
+            } else {
+                button.classList.add('border-rose-500', 'bg-rose-50', 'dark:bg-rose-950/40');
+                feedbackBox.classList.add('bg-rose-100', 'text-rose-900', 'dark:bg-rose-950/60', 'dark:text-rose-300');
+                feedbackBox.innerHTML = `<div class="flex items-center gap-2 font-bold mb-1"><i class="fa-solid fa-circle-xmark text-rose-600"><span>Analisis Belum Tepat:</span></i></div>${explanation}`;
+            }
+            
+            renderMath();
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.className = "fa-solid fa-moon text-base";
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = "fa-solid fa-sun text-base";
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-icon').className = "fa-solid fa-sun text-base";
+        }
+
+        // --- Interactive Canvas Graph Renderers ---
+        function drawGrid(ctx, width, height) {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#090d16';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < width; x += 25) {
+                ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+            }
+            for (let y = 0; y < height; y += 25) {
+                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+            }
+            
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(0, height / 2); ctx.lineTo(width, height / 2); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(width / 2, 0); ctx.lineTo(width / 2, height); ctx.stroke();
+        }
+
+        function updateGraph41() {
+            const a = parseFloat(document.getElementById('slider-a').value);
+            const h = parseFloat(document.getElementById('slider-h').value);
+            const k = parseFloat(document.getElementById('slider-k').value);
+            
+            document.getElementById('val-a').innerText = a;
+            document.getElementById('val-h').innerText = h;
+            document.getElementById('val-k').innerText = k;
+            document.getElementById('eq-display-41').innerText = `f(x) = ${a} / (x - ${h}) + ${k}`;
+
+            const canvas = document.getElementById('canvas-41');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h_canvas = canvas.height;
+            drawGrid(ctx, w, h_canvas);
+
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let first = true;
+            for (let px = 0; px <= w; px += 2) {
+                let x = (px - w / 2) / 25;
+                if (Math.abs(x - h) < 0.05) { first = true; continue; }
+                let y = a / (x - h) + k;
+                let py = h_canvas / 2 - y * 25;
+                if (first) { ctx.moveTo(px, py); first = false; }
+                else { ctx.lineTo(px, py); }
+            }
+            ctx.stroke();
+        }
+
+        function updateGraph42() {
+            const b = parseFloat(document.getElementById('slider-base').value);
+            document.getElementById('val-base').innerText = b.toFixed(1);
+            document.getElementById('eq-display-42').innerText = `f(x) = ${b.toFixed(1)}^x`;
+
+            const canvas = document.getElementById('canvas-42');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h_canvas = canvas.height;
+            drawGrid(ctx, w, h_canvas);
+
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let first = true;
+            for (let px = 0; px <= w; px += 2) {
+                let x = (px - w / 2) / 30;
+                let y = Math.pow(b, x);
+                let py = h_canvas - 40 - y * 25;
+                if (first) { ctx.moveTo(px, py); first = false; }
+                else { ctx.lineTo(px, py); }
+            }
+            ctx.stroke();
+        }
+
+        function updateGraph43() {
+            const h = parseFloat(document.getElementById('slider-h43').value);
+            const k = parseFloat(document.getElementById('slider-k43').value);
+            document.getElementById('val-h43').innerText = h;
+            document.getElementById('val-k43').innerText = k;
+            document.getElementById('eq-display-43').innerText = `f(x) = |x - ${h}| + ${k}`;
+
+            const canvas = document.getElementById('canvas-43');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h_canvas = canvas.height;
+            drawGrid(ctx, w, h_canvas);
+
+            ctx.strokeStyle = '#ec4899';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let first = true;
+            for (let px = 0; px <= w; px += 2) {
+                let x = (px - w / 2) / 25;
+                let y = Math.abs(x - h) + k;
+                let py = h_canvas / 2 - y * 25;
+                if (first) { ctx.moveTo(px, py); first = false; }
+                else { ctx.lineTo(px, py); }
+            }
+            ctx.stroke();
+        }
+
+        function updateGraph44() {
+            const amp = parseFloat(document.getElementById('slider-amp').value);
+            const freq = parseInt(document.getElementById('slider-freq').value);
+            document.getElementById('val-amp').innerText = amp;
+            document.getElementById('val-freq').innerText = freq;
+            document.getElementById('eq-display-44').innerText = `f(x) = ${amp} sin(${freq}x)`;
+
+            const canvas = document.getElementById('canvas-44');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h_canvas = canvas.height;
+            drawGrid(ctx, w, h_canvas);
+
+            ctx.strokeStyle = '#06b6d4';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let first = true;
+            for (let px = 0; px <= w; px += 2) {
+                let x = (px - w / 2) / 30;
+                let y = amp * Math.sin(freq * x);
+                let py = h_canvas / 2 - y * 35;
+                if (first) { ctx.moveTo(px, py); first = false; }
+                else { ctx.lineTo(px, py); }
+            }
+            ctx.stroke();
+        }
+
+        function initAllCanvases() {
+            updateGraph41();
+            updateGraph42();
+            updateGraph43();
+            updateGraph44();
+        }
+
+        window.onload = () => {
+            initAllCanvases();
+            renderMath();
+        };
+    </script>
+</body>
+</html>
